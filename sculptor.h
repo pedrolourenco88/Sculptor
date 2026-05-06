@@ -1,9 +1,16 @@
 #indef SCULPTOR_H
 #define SCUPTOR_H
+
+struct Voxel {
+  float r,g,b; // Cores
+  float a;     // Trasnparencia
+  bool show;   // Incluido ou nao
+};
+
 class Sculptor {
 private:
-  Voxel ***v; // 3D matrix
-  int nx,ny,nz; // Dimensions
+  Voxel ***v;    // 3D matrix
+  int nx,ny,nz;  // Dimensions
   float r,g,b,a; // Current drawing color
 public:
   Sculptor(int _nx, int _ny, int _nz);
