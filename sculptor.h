@@ -1,3 +1,5 @@
+#indef SCULPTOR_H
+#define SCUPTOR_H
 class Sculptor {
 private:
   Voxel ***v; // 3D matrix
@@ -17,3 +19,4 @@ public:
   void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
   void writeOFF(const char* filename);
 };
+#endif
