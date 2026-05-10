@@ -1,5 +1,5 @@
-#indef SCULPTOR_H
-#define SCUPTOR_H
+#ifndef SCULPTOR_H  
+#define SCULPTOR_H
 
 struct Voxel {
   float r,g,b; // Cores
