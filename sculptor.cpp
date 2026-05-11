@@ -1,7 +1,7 @@
 #include "sculptor.h"
 #include <iostream>
 #include <fstream>
-#include <math.h>
+#include <iomanip.h>
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz){//construtor
     this->nx = _nx;
@@ -111,8 +111,9 @@ void Sculptor::writeOFF(const char* filename){
     }
     int quantidade_vertices_ativos = quantidade_ativos * 8;
     int quantidade_faces_ativos = quantidade_ativos * 6;
-
+    
     std::ofstream file(filename);
+    file << std::fixed << std::setprecision(1);
     file << "OFF" << std::endl;
     file << quantidade_vertices_ativos << " " << quantidade_faces_ativos << " 0" << std::endl;
 
