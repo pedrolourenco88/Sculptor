@@ -1,7 +1,7 @@
 #include "sculptor.h"
 #include <iostream>
 #include <fstream>
-#include <iomanip.h>
+#include <iomanip>
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz){//construtor
     this->nx = _nx;
@@ -82,7 +82,23 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
 }
 
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
-  
+    // iterar apeans dentro da caiza que delimita a esfera
+    float minX = xcenter - radius;
+    float maxX = xcenter + radius;
+    float minY = ycenter - radius;
+    float maxY = ycenter + radius;
+    float minZ = zcenter - radius;
+    float maxZ = zcenter + radius;
+
+    if((((x-xcenter)*(x-xcenter))+((y-ycenter)*(y-ycenter))+((z-zcenter)*(z-zcenter)))<=(radius*radius)){
+        
+    }
+
+
+
+
+
+
 }
 
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
@@ -111,7 +127,7 @@ void Sculptor::writeOFF(const char* filename){
     }
     int quantidade_vertices_ativos = quantidade_ativos * 8;
     int quantidade_faces_ativos = quantidade_ativos * 6;
-    
+
     std::ofstream file(filename);
     file << std::fixed << std::setprecision(1);
     file << "OFF" << std::endl;
