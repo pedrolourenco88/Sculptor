@@ -83,34 +83,80 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
 
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
     // iterar apeans dentro da caiza que delimita a esfera
-    float minX = xcenter - radius;
-    float maxX = xcenter + radius;
-    float minY = ycenter - radius;
-    float maxY = ycenter + radius;
-    float minZ = zcenter - radius;
-    float maxZ = zcenter + radius;
+    int minX = xcenter - radius;
+    int maxX = xcenter + radius;
+    int minY = ycenter - radius;
+    int maxY = ycenter + radius;
+    int minZ = zcenter - radius;
+    int maxZ = zcenter + radius;
 
-    if((((x-xcenter)*(x-xcenter))+((y-ycenter)*(y-ycenter))+((z-zcenter)*(z-zcenter)))<=(radius*radius)){
-        
+    for(int i=minX; i<=maxX; i++){
+        for(int j=minY; j<=maxY; j++){
+            for(int k=minZ; k<=maxZ; k++){
+               if((((i-xcenter)*(i-xcenter))+((j-ycenter)*(j-ycenter))+((k-zcenter)*(k-zcenter)))<=(radius*radius)){
+                    putVoxel(i,j,k);
+                }
+            }
+        } 
     }
-
-
-
-
-
-
 }
 
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
-  
+      // iterar apeans dentro da caiza que delimita a esfera
+    int minX = xcenter - radius;
+    int maxX = xcenter + radius;
+    int minY = ycenter - radius;
+    int maxY = ycenter + radius;
+    int minZ = zcenter - radius;
+    int maxZ = zcenter + radius;
+
+    for(int i=minX; i<=maxX; i++){
+        for(int j=minY; j<=maxY; j++){
+            for(int k=minZ; k<=maxZ; k++){
+               if((((i-xcenter)*(i-xcenter))+((j-ycenter)*(j-ycenter))+((k-zcenter)*(k-zcenter)))<=(radius*radius)){
+                    cutVoxel(i,j,k);
+                }
+            }
+        } 
+    }
 }
 
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-  
+    int minX = xcenter - rx;
+    int maxX = xcenter + rx;
+    int minY = ycenter - ry;
+    int maxY = ycenter + ry;
+    int minZ = zcenter - rz;
+    int maxZ = zcenter + rz;
+
+    for(int i=minX; i<=maxX; i++){
+        for(int j=minY; j<=maxY; j++){
+            for(int k=minZ; k<=maxZ; k++){
+               if((((i-xcenter)*(i-xcenter))/(float)(rx*rx)+((j-ycenter)*(j-ycenter))/(float)(ry*ry)+((k-zcenter)*(k-zcenter))/(float)(rz*rz))<= 1){
+                    putVoxel(i,j,k);
+                }
+            }
+        } 
+    }
 }
 
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-  
+    int minX = xcenter - rx;
+    int maxX = xcenter + rx;
+    int minY = ycenter - ry;
+    int maxY = ycenter + ry;
+    int minZ = zcenter - rz;
+    int maxZ = zcenter + rz;
+
+    for(int i=minX; i<=maxX; i++){
+        for(int j=minY; j<=maxY; j++){
+            for(int k=minZ; k<=maxZ; k++){
+               if((((i-xcenter)*(i-xcenter))/(float)(rx*rx)+((j-ycenter)*(j-ycenter))/(float)(ry*ry)+((k-zcenter)*(k-zcenter))/(float)(rz*rz))<= 1){
+                    cutVoxel(i,j,k);
+                }
+            }
+        } 
+    }
 }
 
 void Sculptor::writeOFF(const char* filename){
