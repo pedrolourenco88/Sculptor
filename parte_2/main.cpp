@@ -5,11 +5,22 @@
 #include <vector>
 #include "sculptor.h"
 #include "figurageometrica.h"
+#include "figurageometrica.h"
+#include "putvoxel.h"
+#include "cutvoxel.h"
+#include "putbox.h"
+#include "cutbox.h"
+#include "putsphere.h"
+#include "cutsphere.h"
+#include "putellipsoid.h"
+#include "cutellipsoid.h"
+
 // g++ -Wall -Wextra -O2 main.cpp sculptor.cpp figurageometrica.cpp -o escultor
+
 int main(){
   
   //tenta abrir o arquivo de configuração de onde as instruções virão.
-  std::ifstream file("anel.txt");
+  std::ifstream file("escultura.txt");
 
   //aborto a execução imediatamente se o arquivo não existir. 
   //evita que o programa tente ler o vazio e cause Segmentation Fault.
